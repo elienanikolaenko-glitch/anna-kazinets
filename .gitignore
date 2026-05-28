@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Chrome / browser profiles
+Users*/
+AppData/
+
+# .netlify
+.netlify/
+
+# Images archive
+public/images/
