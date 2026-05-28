@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* ─── Custom theme tokens ─── */
+@theme {
+  --color-bg: #070606;
+  --color-bg2: #0d0c0b;
+  --color-bg3: #161411;
+  --color-surface: #1e1b17;
+  --color-muted: #8a7f75;
+  --color-foreground: #f0ece7;
+  --color-accent: #acd1ee;
+  --color-accent2: #a0635f;
+  --color-accent3: #b1a3b5;
+  --color-accent-dim: rgba(172, 209, 238, 0.08);
+  --color-border: rgba(240, 236, 231, 0.06);
+  --color-border-h: rgba(172, 209, 238, 0.2);
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", monospace;
+}
+
+/* ─── Cool metallic gradient ─── */
+.metallic {
+  background: linear-gradient(
+    135deg,
+    #acd1ee 0%,
+    #cee6f7 25%,
+    #acd1ee 45%,
+    #a0635f 55%,
+    #b1a3b5 75%,
+    #acd1ee 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metallic-solid {
+  background: linear-gradient(
+    135deg,
+    #acd1ee 0%,
+    #cee6f7 25%,
+    #acd1ee 45%,
+    #a0635f 55%,
+    #b1a3b5 75%,
+    #acd1ee 100%
+  );
+}
+
+.metallic-border {
+  border-image: linear-gradient(
+    135deg,
+    #acd1ee, #cee6f7, #acd1ee, #a0635f, #b1a3b5, #acd1ee
+  ) 1;
+}
+
+.metallic-btn {
+  background: linear-gradient(
+    135deg,
+    #acd1ee 0%,
+    #cee6f7 30%,
+    #acd1ee 50%,
+    #a0635f 60%,
+    #b1a3b5 80%,
+    #acd1ee 100%
+  );
+  background-size: 200% 200%;
+  transition: background-position 0.4s ease;
+}
+.metallic-btn:hover {
+  background-position: 100% 100%;
+}
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: auto;
+}
+html.lenis {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  background: #070606;
+  color: #8a7f75;
+  font-family: "Geist", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #acd1ee;
+  color: #070606;
+}
+
+/* ─── Noise overlay ─── */
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ─── Custom cursor ─── */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #acd1ee;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(172, 209, 238, 0.3);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+/* ─── Split text (word-by-word reveal) ─── */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.split-word-inner {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* ─── Magnetic button hover ─── */
+.magnetic-wrap {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Grid overlay ─── */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(240, 236, 231, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 236, 231, 0.012) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
